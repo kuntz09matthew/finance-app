@@ -2,11 +2,22 @@
   "name": "finance_app",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18.18.0 <19 || >=20.10.0 <21"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write .",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css,md,json}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "next": "16.1.1",
@@ -18,8 +29,11 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.1",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "^16.1.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.5.2",
+    "prettier": "^3.7.4",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

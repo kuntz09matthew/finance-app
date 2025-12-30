@@ -48,3 +48,94 @@ The project uses a modular folder structure for maintainability and scalability:
 - `public/` – Public static files (served at root URL)
 
 Each folder is organized to separate concerns and promote code reuse. Add new modules or features in the most logical location. See the roadmap for further modularization guidance.
+
+## Environment Variables
+
+This project uses a `.env.local` file for environment variables. Example variables:
+
+```
+NEXT_PUBLIC_API_URL=http://localhost:3000/api
+NEXT_PUBLIC_VERCEL_ENV=development
+NEXT_PUBLIC_FEATURE_FLAG=true
+```
+
+- `NEXT_PUBLIC_API_URL`: Base URL for API requests (update for production)
+- `NEXT_PUBLIC_VERCEL_ENV`: Current environment (development, preview, production)
+- `NEXT_PUBLIC_FEATURE_FLAG`: Example feature flag for conditional features
+
+**How to use:**
+
+- Place your `.env.local` file in the project root.
+- Variables prefixed with `NEXT_PUBLIC_` are exposed to the browser and can be accessed in your code via `process.env.NEXT_PUBLIC_*`.
+- Do not commit `.env.local` to version control; it is ignored by default.
+
+See [Next.js Environment Variables documentation](https://nextjs.org/docs/app/building-your-application/configuring/environment-variables) for more details.
+
+## Setup & Deployment
+
+Follow these steps to set up and deploy the Financial Assistant app:
+
+### 1. Prerequisites
+
+- **Node.js**: Install the latest LTS version (see `package.json` for supported versions)
+- **npm**: Comes with Node.js, or use `yarn`, `pnpm`, or `bun` if preferred
+- **Git**: For version control and cloning the repository
+
+### 2. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/finance_app.git
+cd finance_app
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+### 4. Configure Environment Variables
+
+- Copy `.env.local.example` to `.env.local` (create one if not present)
+- Update values as needed for your environment
+
+### 5. Run the Development Server
+
+```bash
+npm run dev
+```
+
+- Open [http://localhost:3000](http://localhost:3000) in your browser
+
+### 6. Lint, Format, and Test
+
+- Lint: `npm run lint`
+- Format: `npm run format`
+- Test: `npm test` (add tests as the project grows)
+
+### 7. Build for Production
+
+```bash
+npm run build
+npm start
+```
+
+### 8. Deployment
+
+- **Vercel**: This project is pre-configured for Vercel. Connect your repo and set the required environment variables in the Vercel dashboard.
+- **Manual**: Deploy the `.next` build output to your preferred host. See [Next.js deployment docs](https://nextjs.org/docs/app/building-your-application/deploying) for options.
+
+### 9. CI/CD
+
+- Automated workflows for build, test, and deploy are set up in `.github/workflows/`.
+- See the roadmap and `CHANGELOG.md` for release/versioning workflow.
+
+---
+
+For more details, see the [Financial Assistant Roadmap](FINANCIAL_ASSISTANT_ROADMAP.md) and [CHANGELOG.md].

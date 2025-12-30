@@ -54,60 +54,63 @@
 
 ### PHASE 1: Project Foundation & Setup
 
- [x] Use React with Next.js (SSR/SSG, routing)
-  - Set up Next.js project with TypeScript, SSR/SSG enabled
-  - Configure routing and initial pages
- [x] Create modular folder structure
-  - Set up Next.js project with TypeScript, SSR/SSG enabled
-  - Configure routing and initial pages
- [ ] Initialize git repository and connect to GitHub
- [ ] Create modular folder structure
-  - Organize src, components, pages, assets, utils, config, public, styles
-  - Document structure in README
- [ ] Initialize git repository and connect to GitHub
-  - Set up remote, branch protection, and commit hooks
- [ ] Add .gitignore, README.md, LICENSE
-  - Use MIT or other open license
- [ ] Set up Node.js environment and package.json (latest LTS)
-  - Specify engines, scripts, and dependencies
- [ ] Set up Next.js entry point (pages/\_app.tsx, pages/index.tsx)
-  - Add global providers and layout
- [ ] Set up file-based routing
-  - Create example routes and dynamic pages
- [ ] Set up ESLint and Prettier
-  - Add config files, enforce linting on commit
- [ ] Set up .env.local for environment variables
-  - Document required variables
- [ ] Set up build scripts (npm run build, dev, start)
-  - Add scripts to package.json
- [ ] Set up static asset handling (favicon, logo, etc.)
-  - Place assets in public/
- [ ] Set up automated deployment with Vercel
-  - Configure Vercel project, environment variables (see VERCEL_DEPLOYMENT.md for full instructions)
- [ ] Set up CI/CD with GitHub Actions
-  - Add workflows for build, test, deploy (see .github/workflows/ci-cd.yml and deploy.yml)
- [ ] Add changelog and version tracking
-  - Use CHANGELOG.md and semantic versioning (see CHANGELOG.md and package.json)
- [ ] Document setup and deployment in README
-  - Step-by-step instructions (see 'Setup & Deployment' section in README)
+[x] Use React with Next.js (SSR/SSG, routing)
+
+- Set up Next.js project with TypeScript, SSR/SSG enabled
+- Configure routing and initial pages
+  [x] Create modular folder structure
+- Set up Next.js project with TypeScript, SSR/SSG enabled
+- Configure routing and initial pages
+  [x] Initialize git repository and connect to GitHub
+  [x] Create modular folder structure
+- Organize src, components, pages, assets, utils, config, public, styles
+- Document structure in README
+  [x] Initialize git repository and connect to GitHub
+- Set up remote, branch protection, and commit hooks
+  [x] Add .gitignore, README.md, LICENSE
+- Use MIT or other open license
+  [x] Set up Node.js environment and package.json (latest LTS)
+- Specify engines, scripts, and dependencies
+  [x] Set up Next.js entry point (pages/\_app.tsx, pages/index.tsx)
+- Add global providers and layout
+  [x] Set up file-based routing
+- Create example routes and dynamic pages
+  [x] Set up ESLint and Prettier
+- Config files added, linting and formatting enforced on commit
+  [x] Set up .env.local for environment variables
+- Document required variables
+  [x] Set up build scripts (npm run build, dev, start)
+- Add scripts to package.json
+  [x] Set up static asset handling (favicon, logo, etc.)
+- Place assets in public/
+  [x] Set up automated deployment with Vercel
+- Configure Vercel project, environment variables (see VERCEL_DEPLOYMENT.md for full instructions)
+  [x] Set up CI/CD with GitHub Actions
+- Add workflows for build, test, deploy (see .github/workflows/ci-cd.yml and deploy.yml)
+  [x] Add changelog and version tracking
+- Use CHANGELOG.md and semantic versioning (see CHANGELOG.md and package.json)
+  [x] Document setup and deployment in README
+- Step-by-step instructions (see 'Setup & Deployment' section in README)
 
 ### PHASE 2: App Shell, Theming, State Management
 
- [ ] Set up global app shell/layout
-  - Header, sidebar, main content, footer
-  - Responsive and accessible
- [ ] Set up global state management with Redux Toolkit
-  - Configure store, slices, and middleware
- [ ] Set up theming (light/dark mode) with Tailwind CSS
-  - Add theme switcher, document usage
-   [ ] Set up error boundaries (React Error Boundaries)
-    - Add global and per-page error handling
+[ ] Set up global app shell/layout
+
+- Header, sidebar, main content, footer
+- Responsive and accessible
+  [ ] Set up global state management with Redux Toolkit
+- Configure store, slices, and middleware
+  [ ] Set up theming (light/dark mode) with Tailwind CSS
+- Add theme switcher, document usage
+  [ ] Set up error boundaries (React Error Boundaries)
+  - Add global and per-page error handling
 
 ### PHASE 3: API, Data Layer, and Testing
 
- [ ] Guided onboarding wizard for new users
-  - Step-by-step setup for accounts, budgets, and goals
-  - In-app tooltips and contextual help
+[ ] Guided onboarding wizard for new users
+
+- Step-by-step setup for accounts, budgets, and goals
+- In-app tooltips and contextual help
 - [ ] Accessibility audit and improvements
   - Screen reader support, keyboard navigation, color contrast
 - [ ] Multi-language support (i18n-ready)

@@ -1,3 +1,8 @@
+// Initialize MSW for API mocking in development
+if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled' && typeof window !== 'undefined') {
+  import('../mocks/initMocks');
+}
+
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';

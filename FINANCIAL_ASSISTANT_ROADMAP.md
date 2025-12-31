@@ -113,9 +113,9 @@
 - In-app tooltips and contextual help
 - [x] Accessibility audit and improvements
   - Screen reader support, keyboard navigation, color contrast
-- [ ] Multi-language support (i18n-ready)
+- [x] Multi-language support (i18n-ready)
   - At least one additional language, easy to add more
-- [ ] Set up API layer using Axios for REST
+- [x] Set up API layer using Axios for REST
   - Create API client, handle errors globally
 - [ ] Set up mock API/data for development (MSW)
   - Mock endpoints for all major features

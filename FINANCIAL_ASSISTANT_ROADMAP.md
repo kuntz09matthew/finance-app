@@ -117,7 +117,7 @@
   - At least one additional language, easy to add more
 - [x] Set up API layer using Axios for REST
   - Create API client, handle errors globally
-- [ ] Set up mock API/data for development (MSW)
+- [x] Set up mock API/data for development (MSW)
   - Mock endpoints for all major features
 - [ ] Set up data fetching/caching with React Query
   - Configure queries, mutations, and caching

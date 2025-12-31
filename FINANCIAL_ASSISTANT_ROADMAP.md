@@ -94,13 +94,13 @@
 
 ### PHASE 2: App Shell, Theming, State Management
 
-[ ] Set up global app shell/layout
+[x] Set up global app shell/layout
 
 - Header, sidebar, main content, footer
 - Responsive and accessible
-  [ ] Set up global state management with Redux Toolkit
-- Configure store, slices, and middleware
-  [ ] Set up theming (light/dark mode) with Tailwind CSS
+  [x] Set up global state management with Redux Toolkit
+  - Configure store, slices, and middleware
+    [ ] Set up theming (light/dark mode) with Tailwind CSS
 - Add theme switcher, document usage
   [ ] Set up error boundaries (React Error Boundaries)
   - Add global and per-page error handling

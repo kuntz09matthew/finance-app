@@ -111,22 +111,22 @@
 
 - Step-by-step setup for accounts, budgets, and goals
 - In-app tooltips and contextual help
-- [x] Accessibility audit and improvements
-  - Screen reader support, keyboard navigation, color contrast
-- [x] Multi-language support (i18n-ready)
-  - At least one additional language, easy to add more
-- [x] Set up API layer using Axios for REST
-  - Create API client, handle errors globally
-- [x] Set up mock API/data for development (MSW)
-  - Mock endpoints for all major features
-- [x] Set up data fetching/caching with React Query
-  - Configure queries, mutations, and caching
-- [ ] Set up unit/integration testing (Jest, React Testing Library)
-  - Write tests for components, utils, and API
-- [ ] Set up end-to-end testing (Cypress)
-  - Add E2E tests for critical flows
-- [ ] Document modular design in README
-  - Explain folder structure and patterns
+  [x] Accessibility audit and improvements
+- Screen reader support, keyboard navigation, color contrast
+  [x] Multi-language support (i18n-ready)
+- At least one additional language, easy to add more
+  [x] Set up API layer using Axios for REST
+- Create API client, handle errors globally
+  [x] Set up mock API/data for development (MSW)
+- Mock endpoints for all major features
+  [x] Set up data fetching/caching with React Query
+- Configure queries, mutations, and caching
+  [x] Set up unit/integration testing (Jest, React Testing Library)
+- Write tests for components, utils, and API
+  [x] Set up end-to-end testing (Cypress)
+- Add E2E tests for critical flows
+  [x] Document modular design in README
+- Explain folder structure and patterns
 
 ### PHASE 4: Core Features Implementation
 

@@ -1,0 +1,10 @@
+// Cypress configuration for E2E tests
+{
+  "baseUrl": "http://localhost:3000",
+  "video": false,
+  "screenshotOnRunFailure": true,
+  "viewportWidth": 1280,
+  "viewportHeight": 800,
+  "defaultCommandTimeout": 8000,
+  "retries": 1
+}

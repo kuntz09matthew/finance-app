@@ -50,19 +50,42 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-## Project Structure
+## Modular Design & Folder Structure
 
-The project uses a modular folder structure for maintainability and scalability:
+This project follows a modular, scalable architecture to ensure maintainability, separation of concerns, and ease of feature development. Each major feature or concern is isolated in its own directory, and code is organized for clarity and reusability.
 
-- `src/app/` – Next.js app directory (routing, pages, layouts)
-- `src/components/` – Reusable React components
-- `src/utils/` – Utility functions and helpers
-- `src/config/` – Configuration files and constants
-- `src/assets/` – Static assets (images, fonts, etc.)
-- `src/styles/` – Global and modular stylesheets
-- `public/` – Public static files (served at root URL)
+### Top-Level Structure
 
-Each folder is organized to separate concerns and promote code reuse. Add new modules or features in the most logical location. See the roadmap for further modularization guidance.
+- `src/app/` – Next.js app directory for routing, layouts, and pages. Each route is a folder, supporting nested layouts and server/client components.
+- `src/components/` – Reusable React components, organized by domain (e.g., `layout/`, `onboarding/`). Each component is a single file with one export.
+- `src/features/` – Feature modules (Redux slices, business logic, feature-specific state). Each feature has its own folder (e.g., `example/`).
+- `src/hooks/` – Custom React hooks for data fetching, state, or logic reuse. Hooks are colocated by domain when possible.
+- `src/api/` – API client modules and data-fetching logic, using a global Axios instance for consistency and error handling.
+- `src/utils/` – Utility functions and helpers, shared across the app.
+- `src/config/` – Configuration files, constants, and environment-specific settings.
+- `src/assets/` – Static assets (images, fonts, test data). Test data for a ~$60k/year household is provided for development and testing.
+- `src/styles/` – Global and modular stylesheets, including Tailwind CSS configuration and custom CSS variables.
+- `src/mocks/` – Mock Service Worker (MSW) setup for API mocking in development and tests.
+- `public/` – Public static files (served at root URL).
+
+### Architectural Patterns
+
+- **Single Export per File:** Each component, hook, or utility exports only one symbol (default or named) to avoid confusion and circular dependencies.
+- **No Code Duplication:** Shared logic is abstracted into hooks or utilities. Components are reused and never duplicated.
+- **Hooks Usage:** React hooks are only called inside function components or custom hooks, never in regular functions or outside React context.
+- **State Management:** Uses Redux Toolkit for global state, colocated slices in `src/features/`, and React Query for data fetching/caching.
+- **API Layer:** All API calls go through a global Axios client (`src/utils/apiClient.ts`) with global error handling and interceptors.
+- **Testing & Mocking:** MSW is used for API mocking. Test data is realistic and based on a ~$60k/year household (see `src/assets/testdata_onboarding.json`).
+- **Theming:** Light/dark mode is supported via Tailwind CSS and a `ThemeSwitcher` component. All UI respects theme variables.
+- **Accessibility & Responsiveness:** All components are accessible (WCAG), keyboard navigable, and mobile responsive.
+
+### Adding New Features
+
+- Place new features in the most logical folder (e.g., a new slice in `src/features/`, a new page in `src/app/`, or a new component in `src/components/`).
+- Update or add test data in `src/assets/` as needed.
+- Follow the roadmap and quality standards for code style, documentation, and testing.
+
+For more details, see the [Financial Assistant Roadmap](FINANCIAL_ASSISTANT_ROADMAP.md) and [CHANGELOG.md].
 
 ## Environment Variables
 

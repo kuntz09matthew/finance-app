@@ -9,6 +9,7 @@ import './globals.css';
 import AppShell from '@/components/layout/AppShell';
 import I18nProvider from './I18nProvider';
 import StoreProvider from '@/storeProvider';
+import ReactQueryProvider from '@/ReactQueryProvider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -34,9 +35,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <StoreProvider>
-          <I18nProvider>
-            <AppShell>{children}</AppShell>
-          </I18nProvider>
+          <ReactQueryProvider>
+            <I18nProvider>
+              <AppShell>{children}</AppShell>
+            </I18nProvider>
+          </ReactQueryProvider>
         </StoreProvider>
       </body>
     </html>

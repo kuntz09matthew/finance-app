@@ -235,7 +235,7 @@ function BudgetStep({ onNext, onBack, budget, setBudget }: BudgetStepProps) {
               min="0"
               placeholder={key.charAt(0).toUpperCase() + key.slice(1)}
               value={String(value)}
-              onChange={(e) => handleChange(key, e.target.value)}
+              onChange={(e) => handleChange(key as keyof Budget, e.target.value)}
             />
           </div>
         ))}

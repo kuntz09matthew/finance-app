@@ -8,12 +8,10 @@ export const metadata: Metadata = {
 
 export default function Onboarding() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-zinc-50 dark:bg-black">
-      <main className="w-full max-w-xl px-4 py-16 bg-white dark:bg-zinc-900 rounded-lg shadow-md">
-        <h1 className="text-3xl font-bold text-center text-zinc-900 dark:text-zinc-100 mb-4">
-          Onboarding Wizard
-        </h1>
-        <p className="text-center text-zinc-600 dark:text-zinc-300 mb-8">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background">
+      <main className="w-full max-w-xl px-4 py-16 bg-background rounded-lg shadow-md">
+        <h1 className="text-3xl font-bold text-center text-foreground mb-4">Onboarding Wizard</h1>
+        <p className="text-center text-foreground mb-8">
           Let’s get your household set up. This wizard will guide you through adding your household
           members, income sources, and initial budgets.
         </p>

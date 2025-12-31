@@ -7,12 +7,17 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-zinc-50 dark:bg-black">
-      <main className="w-full max-w-2xl px-4 py-16 bg-white dark:bg-zinc-900 rounded-lg shadow-md">
-        <h1 className="text-4xl font-bold text-center text-zinc-900 dark:text-zinc-100 mb-4">
-          Welcome to Your Financial Assistant
-        </h1>
-        <p className="text-lg text-center text-zinc-600 dark:text-zinc-300 mb-8">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background">
+      <main
+        className="w-full max-w-2xl px-4 py-16 rounded-lg shadow-md border"
+        style={{
+          background: 'var(--card-background)',
+          color: 'var(--card-foreground)',
+          borderColor: '#e5e7eb',
+        }}
+      >
+        <h1 className="text-4xl font-bold text-center mb-4">Welcome to Your Financial Assistant</h1>
+        <p className="text-lg text-center mb-8">
           Track your income, expenses, savings, and goals—all in one place. Start by adding your
           household details and financial accounts.
         </p>

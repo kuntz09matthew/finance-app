@@ -1,8 +1,30 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
+  --background: #f8fafc;
   --foreground: #171717;
+  --card-background: #fff;
+  --card-foreground: #222;
+  --header-background: #fff;
+  --header-border: #e5e7eb;
+}
+
+:root.light {
+  --background: #f8fafc;
+  --foreground: #171717;
+  --card-background: #fff;
+  --card-foreground: #222;
+  --header-background: #fff;
+  --header-border: #e5e7eb;
+}
+
+:root.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --card-background: #18181b;
+  --card-foreground: #ededed;
+  --header-background: #18181b;
+  --header-border: #27272a;
 }
 
 @theme inline {

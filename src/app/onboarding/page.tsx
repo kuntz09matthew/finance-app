@@ -1,8 +1,9 @@
-import { Metadata } from "next";
+import { Metadata } from 'next';
+import { OnboardingWizard } from '@/components/onboarding/OnboardingWizard';
 
 export const metadata: Metadata = {
-  title: "Finance App | Onboarding",
-  description: "Step-by-step onboarding for your household financial setup.",
+  title: 'Finance App | Onboarding',
+  description: 'Step-by-step onboarding for your household financial setup.',
 };
 
 export default function Onboarding() {
@@ -13,10 +14,11 @@ export default function Onboarding() {
           Onboarding Wizard
         </h1>
         <p className="text-center text-zinc-600 dark:text-zinc-300 mb-8">
-          Let’s get your household set up. This wizard will guide you through adding your household members, income sources, and initial budgets.
+          Let’s get your household set up. This wizard will guide you through adding your household
+          members, income sources, and initial budgets.
         </p>
         <div className="flex flex-col gap-4 items-center">
-          <span className="text-zinc-500 dark:text-zinc-400">(Wizard steps coming soon)</span>
+          <OnboardingWizard />
         </div>
       </main>
     </div>

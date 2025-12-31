@@ -107,7 +107,7 @@
 
 ### PHASE 3: API, Data Layer, and Testing
 
-[ ] Guided onboarding wizard for new users
+[x] Guided onboarding wizard for new users
 
 - Step-by-step setup for accounts, budgets, and goals
 - In-app tooltips and contextual help

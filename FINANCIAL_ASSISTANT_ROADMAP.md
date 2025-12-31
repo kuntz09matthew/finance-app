@@ -132,7 +132,7 @@
 
 #### Dashboard & Alerts
 
-- [ ] Dashboard overview
+- [x] Dashboard overview
   - Summary cards: account balances, income, expenses, savings, goals
   - Recent activity feed
 - [ ] Alerts & warnings

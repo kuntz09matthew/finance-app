@@ -11,16 +11,19 @@ function getInitialThemeSSR(): 'light' | 'dark' {
 const ThemeSwitcher: React.FC = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>(getInitialThemeSSR);
 
+  // Only render on client to avoid hydration mismatch
+  const isClient = typeof window !== 'undefined';
+
   useEffect(() => {
+    if (!isClient) return;
     document.documentElement.classList.remove('light', 'dark');
     document.documentElement.classList.add(theme);
     if (typeof window !== 'undefined') {
       localStorage.theme = theme;
     }
-  }, [theme]);
+  }, [theme, isClient]);
 
-  // Only render button on client (window defined)
-  if (typeof window === 'undefined') return null;
+  if (!isClient) return null;
 
   return (
     <button

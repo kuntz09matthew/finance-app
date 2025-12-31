@@ -64,7 +64,7 @@ export function OnboardingWizard() {
   };
 
   return (
-    <div>
+    <div aria-label="Onboarding Wizard" role="form">
       {step === 'household' && (
         <HouseholdStep onNext={next} household={household} setHousehold={setHousehold} />
       )}
@@ -93,44 +93,75 @@ function HouseholdStep({ onNext, household, setHousehold }: HouseholdStepProps) 
   const removeMember = (idx: number) => setHousehold((prev) => prev.filter((_, i) => i !== idx));
   const canContinue = household.every((m) => m.name && m.age && m.relation);
   return (
-    <div>
+    <div aria-label="Household Members Step" role="group">
       <h2 className="text-xl font-semibold mb-2">Household Members</h2>
-      <p className="mb-4">Add your household members to get started.</p>
+      <p className="mb-4">
+        Add your household members to get started. All fields required. Use Tab to navigate.
+      </p>
       <div className="flex flex-col gap-4 mb-4">
         {household.map((member, idx) => (
           <div key={idx} className="flex gap-2 items-end">
+            <label htmlFor={`member-name-${idx}`} className="sr-only">
+              Name
+            </label>
             <input
+              id={`member-name-${idx}`}
               className="border rounded px-2 py-1 w-32"
               placeholder="Name"
               value={member.name}
               onChange={(e) => handleChange(idx, 'name', e.target.value)}
+              aria-required="true"
             />
+            <label htmlFor={`member-age-${idx}`} className="sr-only">
+              Age
+            </label>
             <input
+              id={`member-age-${idx}`}
               className="border rounded px-2 py-1 w-20"
               placeholder="Age"
               type="number"
               min="0"
               value={member.age}
               onChange={(e) => handleChange(idx, 'age', e.target.value)}
+              aria-required="true"
             />
+            <label htmlFor={`member-relation-${idx}`} className="sr-only">
+              Relation
+            </label>
             <input
+              id={`member-relation-${idx}`}
               className="border rounded px-2 py-1 w-28"
               placeholder="Relation"
               value={member.relation}
               onChange={(e) => handleChange(idx, 'relation', e.target.value)}
+              aria-required="true"
             />
             {household.length > 1 && (
-              <button className="btn-secondary" onClick={() => removeMember(idx)} title="Remove">
+              <button
+                className="btn-secondary"
+                onClick={() => removeMember(idx)}
+                title="Remove member"
+                aria-label={`Remove member ${member.name || idx + 1}`}
+              >
                 -
               </button>
             )}
           </div>
         ))}
-        <button className="btn-secondary w-fit" onClick={addMember}>
+        <button
+          className="btn-secondary w-fit"
+          onClick={addMember}
+          aria-label="Add household member"
+        >
           + Add Member
         </button>
       </div>
-      <button className="btn-primary" onClick={onNext} disabled={!canContinue}>
+      <button
+        className="btn-primary"
+        onClick={onNext}
+        disabled={!canContinue}
+        aria-label="Next: Income"
+      >
         Next: Income
       </button>
     </div>
@@ -153,30 +184,47 @@ function IncomeStep({ onNext, onBack, income, setIncome }: IncomeStepProps) {
   const removeIncome = (idx: number) => setIncome((prev) => prev.filter((_, i) => i !== idx));
   const canContinue = income.every((i) => i.source && i.amount && i.frequency);
   return (
-    <div>
+    <div aria-label="Income Sources Step" role="group">
       <h2 className="text-xl font-semibold mb-2">Income Sources</h2>
-      <p className="mb-4">Add your income sources (salary, side jobs, etc.).</p>
+      <p className="mb-4">
+        Add your income sources (salary, side jobs, etc.). All fields required. Use Tab to navigate.
+      </p>
       <div className="flex flex-col gap-4 mb-4">
         {income.map((inc, idx) => (
           <div key={idx} className="flex gap-2 items-end">
+            <label htmlFor={`income-source-${idx}`} className="sr-only">
+              Source
+            </label>
             <input
+              id={`income-source-${idx}`}
               className="border rounded px-2 py-1 w-32"
               placeholder="Source"
               value={inc.source}
               onChange={(e) => handleChange(idx, 'source', e.target.value)}
+              aria-required="true"
             />
+            <label htmlFor={`income-amount-${idx}`} className="sr-only">
+              Amount
+            </label>
             <input
+              id={`income-amount-${idx}`}
               className="border rounded px-2 py-1 w-24"
               placeholder="Amount"
               type="number"
               min="0"
               value={inc.amount}
               onChange={(e) => handleChange(idx, 'amount', e.target.value)}
+              aria-required="true"
             />
+            <label htmlFor={`income-frequency-${idx}`} className="sr-only">
+              Frequency
+            </label>
             <select
+              id={`income-frequency-${idx}`}
               className="border rounded px-2 py-1"
               value={inc.frequency}
               onChange={(e) => handleChange(idx, 'frequency', e.target.value)}
+              aria-required="true"
             >
               <option value="monthly">Monthly</option>
               <option value="bi-weekly">Bi-weekly</option>
@@ -184,21 +232,31 @@ function IncomeStep({ onNext, onBack, income, setIncome }: IncomeStepProps) {
               <option value="annual">Annual</option>
             </select>
             {income.length > 1 && (
-              <button className="btn-secondary" onClick={() => removeIncome(idx)} title="Remove">
+              <button
+                className="btn-secondary"
+                onClick={() => removeIncome(idx)}
+                title="Remove income source"
+                aria-label={`Remove income source ${inc.source || idx + 1}`}
+              >
                 -
               </button>
             )}
           </div>
         ))}
-        <button className="btn-secondary w-fit" onClick={addIncome}>
+        <button className="btn-secondary w-fit" onClick={addIncome} aria-label="Add income source">
           + Add Income
         </button>
       </div>
       <div className="flex gap-2">
-        <button className="btn-secondary" onClick={onBack}>
+        <button className="btn-secondary" onClick={onBack} aria-label="Back to Household">
           Back
         </button>
-        <button className="btn-primary" onClick={onNext} disabled={!canContinue}>
+        <button
+          className="btn-primary"
+          onClick={onNext}
+          disabled={!canContinue}
+          aria-label="Next: Budget"
+        >
           Next: Budget
         </button>
       </div>
@@ -219,9 +277,11 @@ function BudgetStep({ onNext, onBack, budget, setBudget }: BudgetStepProps) {
   };
   const canContinue = Object.values(budget).every((v) => v !== '');
   return (
-    <div>
+    <div aria-label="Budget Step" role="group">
       <h2 className="text-xl font-semibold mb-2">Initial Budget</h2>
-      <p className="mb-4">Set up your initial monthly budget.</p>
+      <p className="mb-4">
+        Set up your initial monthly budget. All fields required. Use Tab to navigate.
+      </p>
       <div className="grid grid-cols-2 gap-3 mb-4">
         {Object.entries(budget).map(([key, value]) => (
           <div key={key} className="flex flex-col">
@@ -236,15 +296,21 @@ function BudgetStep({ onNext, onBack, budget, setBudget }: BudgetStepProps) {
               placeholder={key.charAt(0).toUpperCase() + key.slice(1)}
               value={String(value)}
               onChange={(e) => handleChange(key as keyof Budget, e.target.value)}
+              aria-required="true"
             />
           </div>
         ))}
       </div>
       <div className="flex gap-2">
-        <button className="btn-secondary" onClick={onBack}>
+        <button className="btn-secondary" onClick={onBack} aria-label="Back to Income">
           Back
         </button>
-        <button className="btn-primary" onClick={onNext} disabled={!canContinue}>
+        <button
+          className="btn-primary"
+          onClick={onNext}
+          disabled={!canContinue}
+          aria-label="Finish onboarding"
+        >
           Finish
         </button>
       </div>
@@ -254,13 +320,13 @@ function BudgetStep({ onNext, onBack, budget, setBudget }: BudgetStepProps) {
 
 function CompleteStep({ onBack }: { onBack?: () => void }) {
   return (
-    <div>
+    <div aria-label="Onboarding Complete Step" role="group">
       <h2 className="text-xl font-semibold mb-2">All Set!</h2>
       <p className="mb-4">
         Your household is ready. You can now use the dashboard and other features.
       </p>
       {onBack && (
-        <button className="btn-secondary" onClick={onBack}>
+        <button className="btn-secondary" onClick={onBack} aria-label="Back to Budget">
           Back
         </button>
       )}

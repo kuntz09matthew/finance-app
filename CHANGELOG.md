@@ -1,3 +1,9 @@
+## [Unreleased]
+
+### Added
+
+- Accessibility improvements: navigation roles, aria-labels, skip-to-content link, visible focus states, improved color contrast, and screen reader support for onboarding wizard.
+
 # Changelog
 
 ## [Unreleased]

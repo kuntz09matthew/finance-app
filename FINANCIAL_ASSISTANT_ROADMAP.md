@@ -111,7 +111,7 @@
 
 - Step-by-step setup for accounts, budgets, and goals
 - In-app tooltips and contextual help
-- [ ] Accessibility audit and improvements
+- [x] Accessibility audit and improvements
   - Screen reader support, keyboard navigation, color contrast
 - [ ] Multi-language support (i18n-ready)
   - At least one additional language, easy to add more

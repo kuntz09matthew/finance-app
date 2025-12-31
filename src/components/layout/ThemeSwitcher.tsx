@@ -9,19 +9,15 @@ const getInitialTheme = () => {
 };
 
 const ThemeSwitcher: React.FC = () => {
-  const [theme, setTheme] = useState<'light' | 'dark' | null>(() => {
-    if (typeof window === 'undefined') return null;
-    return getInitialTheme();
-  });
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => getInitialTheme());
 
   useEffect(() => {
-    if (!theme) return;
     document.documentElement.classList.remove('light', 'dark');
     document.documentElement.classList.add(theme);
     localStorage.theme = theme;
   }, [theme]);
 
-  if (!theme) return null;
+  if (typeof window === 'undefined') return null;
 
   return (
     <button

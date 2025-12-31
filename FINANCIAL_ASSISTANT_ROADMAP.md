@@ -102,7 +102,7 @@
   - Configure store, slices, and middleware
     [x] Set up theming (light/dark mode) with Tailwind CSS
     - Add theme switcher, document usage
-      [ ] Set up error boundaries (React Error Boundaries)
+      [x] Set up error boundaries (React Error Boundaries)
   - Add global and per-page error handling
 
 ### PHASE 3: API, Data Layer, and Testing

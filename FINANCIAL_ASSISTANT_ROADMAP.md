@@ -100,9 +100,9 @@
 - Responsive and accessible
   [x] Set up global state management with Redux Toolkit
   - Configure store, slices, and middleware
-    [ ] Set up theming (light/dark mode) with Tailwind CSS
-- Add theme switcher, document usage
-  [ ] Set up error boundaries (React Error Boundaries)
+    [x] Set up theming (light/dark mode) with Tailwind CSS
+    - Add theme switcher, document usage
+      [ ] Set up error boundaries (React Error Boundaries)
   - Add global and per-page error handling
 
 ### PHASE 3: API, Data Layer, and Testing

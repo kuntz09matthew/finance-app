@@ -1,3 +1,18 @@
+# Theming (Light/Dark Mode)
+
+This app supports light and dark themes using Tailwind CSS. A theme switcher is available in the header to toggle between modes. The selected theme is saved in localStorage and respects system preferences by default.
+
+**How it works:**
+
+- Uses Tailwind's `darkMode: 'class'` strategy.
+- The `ThemeSwitcher` component toggles the `dark` class on `<html>`.
+- Custom CSS variables in `globals.css` provide background/foreground color support.
+
+**To add theme support to new components:**
+
+- Use `bg-background` and `text-foreground` for backgrounds and text.
+- Use `dark:` variants for Tailwind classes as needed.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

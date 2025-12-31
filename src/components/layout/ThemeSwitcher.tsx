@@ -1,29 +1,25 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 
-function getInitialThemeSSR(): 'light' | 'dark' {
-  if (typeof window === 'undefined') return 'light';
-  if (window.localStorage && localStorage.theme) return localStorage.theme;
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
+const getInitialTheme = (): 'light' | 'dark' => {
+  if (typeof window !== 'undefined') {
+    if (window.localStorage && localStorage.theme) return localStorage.theme;
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      return 'dark';
+  }
   return 'light';
-}
+};
 
 const ThemeSwitcher: React.FC = () => {
-  const [theme, setTheme] = useState<'light' | 'dark'>(getInitialThemeSSR);
-
-  // Only render on client to avoid hydration mismatch
-  const isClient = typeof window !== 'undefined';
+  const [theme, setTheme] = useState<'light' | 'dark'>(getInitialTheme);
 
   useEffect(() => {
-    if (!isClient) return;
     document.documentElement.classList.remove('light', 'dark');
     document.documentElement.classList.add(theme);
     if (typeof window !== 'undefined') {
       localStorage.theme = theme;
     }
-  }, [theme, isClient]);
-
-  if (!isClient) return null;
+  }, [theme]);
 
   return (
     <button

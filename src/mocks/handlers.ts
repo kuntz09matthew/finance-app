@@ -73,17 +73,64 @@ const bills = [
 
 const dashboard = {
   summary: {
-    balances: 5400,
-    income: 5000,
-    expenses: 2715,
+    balances: -50,
+    income: 4000,
+    expenses: 5000,
     savings: 400,
-    goals: 2,
+    goals: 1,
   },
   recentActivity: [
     { type: 'income', description: 'Alex - Salary', amount: 4200, date: '2025-12-28' },
     { type: 'bill', description: 'Rent paid', amount: -1200, date: '2025-12-27' },
     { type: 'bill', description: 'Electric paid', amount: -90, date: '2025-12-20' },
     { type: 'income', description: 'Jamie - Part-time', amount: 800, date: '2025-12-15' },
+  ],
+  bills: [
+    {
+      id: 1,
+      name: 'Rent',
+      category: 'Housing',
+      amount: 1200,
+      dueDate: '2025-12-30',
+      recurring: true,
+      autoPay: true,
+    },
+    {
+      id: 2,
+      name: 'Electric',
+      category: 'Utilities',
+      amount: 90,
+      dueDate: '2026-01-02',
+      recurring: true,
+      autoPay: false,
+    },
+    {
+      id: 3,
+      name: 'Internet',
+      category: 'Utilities',
+      amount: 60,
+      dueDate: '2026-01-15',
+      recurring: true,
+      autoPay: true,
+    },
+    {
+      id: 4,
+      name: 'Car Insurance',
+      category: 'Insurance',
+      amount: 100,
+      dueDate: '2026-01-20',
+      recurring: true,
+      autoPay: false,
+    },
+    {
+      id: 5,
+      name: 'Streaming',
+      category: 'Entertainment',
+      amount: 15,
+      dueDate: '2026-01-25',
+      recurring: true,
+      autoPay: true,
+    },
   ],
 };
 

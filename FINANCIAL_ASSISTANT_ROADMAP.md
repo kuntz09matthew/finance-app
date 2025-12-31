@@ -135,7 +135,7 @@
 - [x] Dashboard overview
   - Summary cards: account balances, income, expenses, savings, goals
   - Recent activity feed
-- [ ] Alerts & warnings
+- [x] Alerts & warnings
   - Spending alerts, bill reminders, goal progress, overdraft warnings
   - Severity-based color coding
   - [ ] Customizable widgets

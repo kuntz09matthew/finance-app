@@ -3,10 +3,14 @@
 import { useTranslation } from 'react-i18next';
 
 import { useDashboardQuery } from '@/hooks/useDashboardQuery';
+import { AlertsList } from '@/components/alerts/AlertsList';
+import { getDashboardAlerts } from '@/utils/dashboardAlerts';
 
 export default function Dashboard() {
   const { t } = useTranslation();
   const { data, isLoading, error } = useDashboardQuery();
+  // Compose alerts data (mock: pass bills if available)
+  const alerts = data ? getDashboardAlerts({ ...data, bills: data.bills || [] }) : [];
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-background">
       <main className="w-full max-w-3xl px-4 py-16 bg-background rounded-lg shadow-md">
@@ -20,6 +24,7 @@ export default function Dashboard() {
           <div className="text-center text-red-500">Error loading dashboard.</div>
         ) : data ? (
           <>
+            <AlertsList alerts={alerts} />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 w-full">
               <DashboardCard
                 label="Account Balances"

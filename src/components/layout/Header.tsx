@@ -6,7 +6,7 @@ const Header: React.FC = () => {
   const { t, i18n } = useTranslation();
   return (
     <header
-      className="w-full flex items-center justify-between px-6 py-4 border-b"
+      className="w-full flex items-center justify-between px-6 py-4 border-b sticky top-0 z-30 bg-background/95 backdrop-blur"
       style={{
         background: 'var(--header-background)',
         borderColor: 'var(--header-border)',

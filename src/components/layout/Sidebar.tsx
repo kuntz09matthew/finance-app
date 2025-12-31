@@ -7,7 +7,7 @@ const Sidebar: React.FC = () => {
   const { t } = useTranslation();
   return (
     <aside
-      className="h-full w-64 bg-background border-r p-6 hidden md:block"
+      className="fixed top-16 left-0 h-[calc(100vh-4rem)] w-64 bg-background border-r p-6 hidden md:block z-20"
       role="navigation"
       aria-label="Sidebar navigation"
     >

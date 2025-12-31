@@ -138,7 +138,7 @@
 - [x] Alerts & warnings
   - Spending alerts, bill reminders, goal progress, overdraft warnings
   - Severity-based color coding
-  - [ ] Customizable widgets
+  - [x] Customizable widgets
     - Add/remove/reorder dashboard widgets
     - Widget settings and preferences
   - [ ] Push notifications for reminders and alerts (PWA/mobile)

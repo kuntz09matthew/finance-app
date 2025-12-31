@@ -13,7 +13,7 @@ const AppShell: React.FC<AppShellProps> = ({ children }) => (
     <Header />
     <div className="flex flex-1 w-full">
       <Sidebar />
-      <main id="main-content" className="flex-1 p-6 md:p-10 bg-background">
+      <main id="main-content" className="flex-1 p-6 md:p-10 bg-background ml-0 md:ml-64">
         {children}
       </main>
     </div>

@@ -1,0 +1,44 @@
+{
+  "app": {
+    "title": "Asistente Financiero",
+    "welcome": "Bienvenido a tu panel financiero",
+    "dashboard": "Tablero",
+    "about": "Acerca de",
+    "onboarding": "Incorporación",
+    "user": "Usuario",
+    "language": "Idioma"
+  },
+  "dashboard": {
+    "title": "Tablero",
+    "description": "Aquí verás un resumen de tus cuentas, ingresos, gastos y metas.",
+    "widgetsSoon": "(Los widgets del tablero llegarán pronto)"
+  },
+  "onboarding": {
+    "householdTitle": "Miembros del hogar",
+    "householdDesc": "Agrega los miembros de tu hogar para comenzar. Todos los campos son obligatorios. Usa Tab para navegar.",
+    "name": "Nombre",
+    "age": "Edad",
+    "relation": "Relación",
+    "addMember": "+ Agregar miembro",
+    "removeMember": "Eliminar miembro",
+    "nextIncome": "Siguiente: Ingresos",
+    "incomeTitle": "Fuentes de ingreso",
+    "incomeDesc": "Agrega tus fuentes de ingreso (salario, trabajos secundarios, etc.). Todos los campos son obligatorios. Usa Tab para navegar.",
+    "source": "Fuente",
+    "amount": "Monto",
+    "frequency": "Frecuencia",
+    "addIncome": "+ Agregar ingreso",
+    "removeIncome": "Eliminar fuente de ingreso",
+    "backHousehold": "Atrás",
+    "nextBudget": "Siguiente: Presupuesto",
+    "budgetTitle": "Presupuesto inicial",
+    "budgetDesc": "Configura tu presupuesto mensual inicial. Todos los campos son obligatorios. Usa Tab para navegar.",
+    "finish": "Finalizar",
+    "backIncome": "Atrás",
+    "completeTitle": "¡Todo listo!",
+    "completeDesc": "Tu hogar está listo. Ahora puedes usar el tablero y otras funciones.",
+    "backBudget": "Atrás",
+    "wizardTitle": "Asistente de incorporación",
+    "wizardDesc": "Configura tu hogar. Este asistente te guiará para agregar los miembros del hogar, fuentes de ingreso y presupuestos iniciales."
+  }
+}

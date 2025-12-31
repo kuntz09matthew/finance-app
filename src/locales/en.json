@@ -1,0 +1,44 @@
+{
+  "app": {
+    "title": "Financial Assistant",
+    "welcome": "Welcome to your financial dashboard",
+    "dashboard": "Dashboard",
+    "about": "About",
+    "onboarding": "Onboarding",
+    "user": "User",
+    "language": "Language"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "description": "Here you’ll see a summary of your accounts, income, expenses, and goals.",
+    "widgetsSoon": "(Dashboard widgets coming soon)"
+  },
+  "onboarding": {
+    "householdTitle": "Household Members",
+    "householdDesc": "Add your household members to get started. All fields required. Use Tab to navigate.",
+    "name": "Name",
+    "age": "Age",
+    "relation": "Relation",
+    "addMember": "+ Add Member",
+    "removeMember": "Remove member",
+    "nextIncome": "Next: Income",
+    "incomeTitle": "Income Sources",
+    "incomeDesc": "Add your income sources (salary, side jobs, etc.). All fields required. Use Tab to navigate.",
+    "source": "Source",
+    "amount": "Amount",
+    "frequency": "Frequency",
+    "addIncome": "+ Add Income",
+    "removeIncome": "Remove income source",
+    "backHousehold": "Back",
+    "nextBudget": "Next: Budget",
+    "budgetTitle": "Initial Budget",
+    "budgetDesc": "Set up your initial monthly budget. All fields required. Use Tab to navigate.",
+    "finish": "Finish",
+    "backIncome": "Back",
+    "completeTitle": "All Set!",
+    "completeDesc": "Your household is ready. You can now use the dashboard and other features.",
+    "backBudget": "Back",
+    "wizardTitle": "Onboarding Wizard",
+    "wizardDesc": "Let’s get your household set up. This wizard will guide you through adding your household members, income sources, and initial budgets."
+  }
+}

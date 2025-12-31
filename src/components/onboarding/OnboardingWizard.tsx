@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export type OnboardingStep = 'household' | 'income' | 'budget' | 'complete';
 
@@ -86,6 +87,7 @@ interface HouseholdStepProps {
 }
 
 function HouseholdStep({ onNext, household, setHousehold }: HouseholdStepProps) {
+  const { t } = useTranslation();
   const handleChange = (idx: number, field: keyof HouseholdMember, value: string) => {
     setHousehold((prev) => prev.map((m, i) => (i === idx ? { ...m, [field]: value } : m)));
   };
@@ -94,31 +96,29 @@ function HouseholdStep({ onNext, household, setHousehold }: HouseholdStepProps) 
   const canContinue = household.every((m) => m.name && m.age && m.relation);
   return (
     <div aria-label="Household Members Step" role="group">
-      <h2 className="text-xl font-semibold mb-2">Household Members</h2>
-      <p className="mb-4">
-        Add your household members to get started. All fields required. Use Tab to navigate.
-      </p>
+      <h2 className="text-xl font-semibold mb-2">{t('onboarding.householdTitle')}</h2>
+      <p className="mb-4">{t('onboarding.householdDesc')}</p>
       <div className="flex flex-col gap-4 mb-4">
         {household.map((member, idx) => (
           <div key={idx} className="flex gap-2 items-end">
             <label htmlFor={`member-name-${idx}`} className="sr-only">
-              Name
+              {t('onboarding.name')}
             </label>
             <input
               id={`member-name-${idx}`}
               className="border rounded px-2 py-1 w-32"
-              placeholder="Name"
+              placeholder={t('onboarding.name')}
               value={member.name}
               onChange={(e) => handleChange(idx, 'name', e.target.value)}
               aria-required="true"
             />
             <label htmlFor={`member-age-${idx}`} className="sr-only">
-              Age
+              {t('onboarding.age')}
             </label>
             <input
               id={`member-age-${idx}`}
               className="border rounded px-2 py-1 w-20"
-              placeholder="Age"
+              placeholder={t('onboarding.age')}
               type="number"
               min="0"
               value={member.age}
@@ -126,12 +126,12 @@ function HouseholdStep({ onNext, household, setHousehold }: HouseholdStepProps) 
               aria-required="true"
             />
             <label htmlFor={`member-relation-${idx}`} className="sr-only">
-              Relation
+              {t('onboarding.relation')}
             </label>
             <input
               id={`member-relation-${idx}`}
               className="border rounded px-2 py-1 w-28"
-              placeholder="Relation"
+              placeholder={t('onboarding.relation')}
               value={member.relation}
               onChange={(e) => handleChange(idx, 'relation', e.target.value)}
               aria-required="true"
@@ -140,8 +140,8 @@ function HouseholdStep({ onNext, household, setHousehold }: HouseholdStepProps) 
               <button
                 className="btn-secondary"
                 onClick={() => removeMember(idx)}
-                title="Remove member"
-                aria-label={`Remove member ${member.name || idx + 1}`}
+                title={t('onboarding.removeMember')}
+                aria-label={`${t('onboarding.removeMember')} ${member.name || idx + 1}`}
               >
                 -
               </button>
@@ -151,18 +151,18 @@ function HouseholdStep({ onNext, household, setHousehold }: HouseholdStepProps) 
         <button
           className="btn-secondary w-fit"
           onClick={addMember}
-          aria-label="Add household member"
+          aria-label={t('onboarding.addMember')}
         >
-          + Add Member
+          {t('onboarding.addMember')}
         </button>
       </div>
       <button
         className="btn-primary"
         onClick={onNext}
         disabled={!canContinue}
-        aria-label="Next: Income"
+        aria-label={t('onboarding.nextIncome')}
       >
-        Next: Income
+        {t('onboarding.nextIncome')}
       </button>
     </div>
   );
@@ -176,6 +176,7 @@ interface IncomeStepProps {
 }
 
 function IncomeStep({ onNext, onBack, income, setIncome }: IncomeStepProps) {
+  const { t } = useTranslation();
   const handleChange = (idx: number, field: keyof IncomeSource, value: string) => {
     setIncome((prev) => prev.map((i, n) => (n === idx ? { ...i, [field]: value } : i)));
   };
@@ -185,31 +186,29 @@ function IncomeStep({ onNext, onBack, income, setIncome }: IncomeStepProps) {
   const canContinue = income.every((i) => i.source && i.amount && i.frequency);
   return (
     <div aria-label="Income Sources Step" role="group">
-      <h2 className="text-xl font-semibold mb-2">Income Sources</h2>
-      <p className="mb-4">
-        Add your income sources (salary, side jobs, etc.). All fields required. Use Tab to navigate.
-      </p>
+      <h2 className="text-xl font-semibold mb-2">{t('onboarding.incomeTitle')}</h2>
+      <p className="mb-4">{t('onboarding.incomeDesc')}</p>
       <div className="flex flex-col gap-4 mb-4">
         {income.map((inc, idx) => (
           <div key={idx} className="flex gap-2 items-end">
             <label htmlFor={`income-source-${idx}`} className="sr-only">
-              Source
+              {t('onboarding.source')}
             </label>
             <input
               id={`income-source-${idx}`}
               className="border rounded px-2 py-1 w-32"
-              placeholder="Source"
+              placeholder={t('onboarding.source')}
               value={inc.source}
               onChange={(e) => handleChange(idx, 'source', e.target.value)}
               aria-required="true"
             />
             <label htmlFor={`income-amount-${idx}`} className="sr-only">
-              Amount
+              {t('onboarding.amount')}
             </label>
             <input
               id={`income-amount-${idx}`}
               className="border rounded px-2 py-1 w-24"
-              placeholder="Amount"
+              placeholder={t('onboarding.amount')}
               type="number"
               min="0"
               value={inc.amount}
@@ -217,7 +216,7 @@ function IncomeStep({ onNext, onBack, income, setIncome }: IncomeStepProps) {
               aria-required="true"
             />
             <label htmlFor={`income-frequency-${idx}`} className="sr-only">
-              Frequency
+              {t('onboarding.frequency')}
             </label>
             <select
               id={`income-frequency-${idx}`}
@@ -226,38 +225,46 @@ function IncomeStep({ onNext, onBack, income, setIncome }: IncomeStepProps) {
               onChange={(e) => handleChange(idx, 'frequency', e.target.value)}
               aria-required="true"
             >
-              <option value="monthly">Monthly</option>
-              <option value="bi-weekly">Bi-weekly</option>
-              <option value="weekly">Weekly</option>
-              <option value="annual">Annual</option>
+              <option value="monthly">{t('onboarding.frequency')}: Monthly</option>
+              <option value="bi-weekly">{t('onboarding.frequency')}: Bi-weekly</option>
+              <option value="weekly">{t('onboarding.frequency')}: Weekly</option>
+              <option value="annual">{t('onboarding.frequency')}: Annual</option>
             </select>
             {income.length > 1 && (
               <button
                 className="btn-secondary"
                 onClick={() => removeIncome(idx)}
-                title="Remove income source"
-                aria-label={`Remove income source ${inc.source || idx + 1}`}
+                title={t('onboarding.removeIncome')}
+                aria-label={`${t('onboarding.removeIncome')} ${inc.source || idx + 1}`}
               >
                 -
               </button>
             )}
           </div>
         ))}
-        <button className="btn-secondary w-fit" onClick={addIncome} aria-label="Add income source">
-          + Add Income
+        <button
+          className="btn-secondary w-fit"
+          onClick={addIncome}
+          aria-label={t('onboarding.addIncome')}
+        >
+          {t('onboarding.addIncome')}
         </button>
       </div>
       <div className="flex gap-2">
-        <button className="btn-secondary" onClick={onBack} aria-label="Back to Household">
-          Back
+        <button
+          className="btn-secondary"
+          onClick={onBack}
+          aria-label={t('onboarding.backHousehold')}
+        >
+          {t('onboarding.backHousehold')}
         </button>
         <button
           className="btn-primary"
           onClick={onNext}
           disabled={!canContinue}
-          aria-label="Next: Budget"
+          aria-label={t('onboarding.nextBudget')}
         >
-          Next: Budget
+          {t('onboarding.nextBudget')}
         </button>
       </div>
     </div>
@@ -272,28 +279,27 @@ interface BudgetStepProps {
 }
 
 function BudgetStep({ onNext, onBack, budget, setBudget }: BudgetStepProps) {
+  const { t } = useTranslation();
   const handleChange = (field: keyof Budget, value: string) => {
     setBudget((prev) => ({ ...prev, [field]: value }));
   };
   const canContinue = Object.values(budget).every((v) => v !== '');
   return (
     <div aria-label="Budget Step" role="group">
-      <h2 className="text-xl font-semibold mb-2">Initial Budget</h2>
-      <p className="mb-4">
-        Set up your initial monthly budget. All fields required. Use Tab to navigate.
-      </p>
+      <h2 className="text-xl font-semibold mb-2">{t('onboarding.budgetTitle')}</h2>
+      <p className="mb-4">{t('onboarding.budgetDesc')}</p>
       <div className="grid grid-cols-2 gap-3 mb-4">
         {Object.entries(budget).map(([key, value]) => (
           <div key={key} className="flex flex-col">
             <label className="text-sm mb-1 capitalize" htmlFor={key}>
-              {key}
+              {t(`onboarding.${key}`)}
             </label>
             <input
               className="border rounded px-2 py-1"
               id={key}
               type="number"
               min="0"
-              placeholder={key.charAt(0).toUpperCase() + key.slice(1)}
+              placeholder={t(`onboarding.${key}`)}
               value={String(value)}
               onChange={(e) => handleChange(key as keyof Budget, e.target.value)}
               aria-required="true"
@@ -302,16 +308,16 @@ function BudgetStep({ onNext, onBack, budget, setBudget }: BudgetStepProps) {
         ))}
       </div>
       <div className="flex gap-2">
-        <button className="btn-secondary" onClick={onBack} aria-label="Back to Income">
-          Back
+        <button className="btn-secondary" onClick={onBack} aria-label={t('onboarding.backIncome')}>
+          {t('onboarding.backIncome')}
         </button>
         <button
           className="btn-primary"
           onClick={onNext}
           disabled={!canContinue}
-          aria-label="Finish onboarding"
+          aria-label={t('onboarding.finish')}
         >
-          Finish
+          {t('onboarding.finish')}
         </button>
       </div>
     </div>
@@ -319,15 +325,14 @@ function BudgetStep({ onNext, onBack, budget, setBudget }: BudgetStepProps) {
 }
 
 function CompleteStep({ onBack }: { onBack?: () => void }) {
+  const { t } = useTranslation();
   return (
     <div aria-label="Onboarding Complete Step" role="group">
-      <h2 className="text-xl font-semibold mb-2">All Set!</h2>
-      <p className="mb-4">
-        Your household is ready. You can now use the dashboard and other features.
-      </p>
+      <h2 className="text-xl font-semibold mb-2">{t('onboarding.completeTitle')}</h2>
+      <p className="mb-4">{t('onboarding.completeDesc')}</p>
       {onBack && (
-        <button className="btn-secondary" onClick={onBack} aria-label="Back to Budget">
-          Back
+        <button className="btn-secondary" onClick={onBack} aria-label={t('onboarding.backBudget')}>
+          {t('onboarding.backBudget')}
         </button>
       )}
     </div>

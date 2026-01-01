@@ -13,13 +13,19 @@ const getInitialTheme = (): 'light' | 'dark' => {
 const ThemeSwitcher: React.FC = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>(getInitialTheme);
 
+  // Use a lazy initial state to ensure this only runs on the client
+  const [mounted] = useState(() => typeof window !== 'undefined');
+
   useEffect(() => {
+    if (!mounted) return;
     document.documentElement.classList.remove('light', 'dark');
     document.documentElement.classList.add(theme);
     if (typeof window !== 'undefined') {
       localStorage.theme = theme;
     }
-  }, [theme]);
+  }, [theme, mounted]);
+
+  if (!mounted) return null;
 
   return (
     <button

@@ -23,6 +23,15 @@ const Sidebar: React.FC = () => {
         </li>
         <li>
           <Link
+            href="/income"
+            className="hover:underline focus:outline-none focus:ring-2 focus:ring-blue-400"
+            tabIndex={0}
+          >
+            Income
+          </Link>
+        </li>
+        <li>
+          <Link
             href="/onboarding"
             className="hover:underline focus:outline-none focus:ring-2 focus:ring-blue-400"
             tabIndex={0}

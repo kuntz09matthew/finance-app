@@ -141,13 +141,13 @@
   - [x] Customizable widgets
     - Add/remove/reorder dashboard widgets
     - Widget settings and preferences
-  - [ ] Push notifications for reminders and alerts (PWA/mobile)
+  - [x] Push notifications for reminders and alerts (PWA/mobile)
     - Support for browser/mobile push notifications
 
 #### Income Tracking
 
-- [ ] Add/edit/delete income sources (CRUD)
-- Modal forms, validation, and error handling
+- [x] Add/edit/delete income sources (CRUD)
+  - Modal forms, validation, and error handling
 - [ ] Support multiple earners
   - Assign income to household members, show contribution stats
 - [ ] Frequency settings (weekly, bi-weekly, monthly, annual)

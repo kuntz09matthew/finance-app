@@ -4,11 +4,13 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { exampleReducer } from './features/example/exampleSlice';
 import dashboardWidgetsReducer from './features/dashboard/dashboardWidgetsSlice';
+import incomeReducer from './features/income/incomeSlice';
 
 export const store = configureStore({
   reducer: {
     example: exampleReducer,
     dashboardWidgets: dashboardWidgetsReducer,
+    income: incomeReducer,
   },
   // Add middleware here if needed
 });

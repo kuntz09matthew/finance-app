@@ -13,23 +13,27 @@ export function IncomeManager() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editId, setEditId] = useState<string | null>(null);
 
-  // Load from localStorage on mount
+  // Only load mock data after hydration (client-side)
   useEffect(() => {
-    const saved = localStorage.getItem('incomeSources');
-    if (saved) {
+    async function loadMockData() {
       try {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed)) {
-          dispatch({ type: 'income/setIncomeSources', payload: parsed });
+        const resp = await fetch('/testdata_income.json');
+        if (resp.ok) {
+          const data = await resp.json();
+          if (Array.isArray(data)) {
+            dispatch({ type: 'income/setIncomeSources', payload: data });
+          }
         }
-      } catch {}
+      } catch (e) {
+        console.warn('Failed to load mock income data:', e);
+      }
     }
+    loadMockData();
   }, [dispatch]);
 
-  // Save to localStorage on change
   useEffect(() => {
-    localStorage.setItem('incomeSources', JSON.stringify(sources));
-  }, [sources]);
+    setMounted(true);
+  }, []);
 
   const handleAdd = () => {
     setEditId(null);

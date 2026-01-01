@@ -31,11 +31,7 @@ export default function Dashboard() {
   const dispatch = useDispatch();
   const widgetOrder = useSelector((state: RootState) => state.dashboardWidgets.order);
   const hiddenWidgets = useSelector((state: RootState) => state.dashboardWidgets.hidden);
-  // Get live income sources from Redux
-  const incomeSources = useSelector((state: RootState) => state.income.sources);
-
-  // Calculate total income from Redux
-  const totalIncome = incomeSources.reduce((sum, inc) => sum + (Number(inc.amount) || 0), 0);
+  // ...existing code...
 
   // Compose alerts data (mock: pass bills if available)
   const alerts = data ? getDashboardAlerts({ ...data, bills: data.bills || [] }) : [];
@@ -50,7 +46,9 @@ export default function Dashboard() {
     },
     income: {
       title: t('dashboard.income', { defaultValue: 'Income' }),
-      node: <IncomeWidget value={`$${totalIncome.toLocaleString('en-US')}`} />,
+      node: data ? (
+        <IncomeWidget value={`$${data.summary.income.toLocaleString('en-US')}`} />
+      ) : null,
     },
     expenses: {
       title: t('dashboard.expenses', { defaultValue: 'Expenses' }),

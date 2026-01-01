@@ -4,6 +4,10 @@ import { useTranslation } from 'react-i18next';
 
 const Header: React.FC = () => {
   const { t, i18n } = useTranslation();
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
     <header
       className="w-full flex items-center justify-between px-6 py-4 border-b sticky top-0 z-30 bg-background/95 backdrop-blur"
@@ -35,16 +39,18 @@ const Header: React.FC = () => {
         >
           {t('app.about')}
         </a>
-        <ThemeSwitcher />
-        <select
-          aria-label={t('app.language')}
-          value={i18n.language}
-          onChange={(e) => i18n.changeLanguage(e.target.value)}
-          className="ml-4 px-2 py-1 rounded border focus:ring-2 focus:ring-blue-400 bg-inherit"
-        >
-          <option value="en">EN</option>
-          <option value="es">ES</option>
-        </select>
+        {mounted && <ThemeSwitcher />}
+        {mounted && (
+          <select
+            aria-label={t('app.language')}
+            value={i18n.language}
+            onChange={(e) => i18n.changeLanguage(e.target.value)}
+            className="ml-4 px-2 py-1 rounded border focus:ring-2 focus:ring-blue-400 bg-inherit"
+          >
+            <option value="en">EN</option>
+            <option value="es">ES</option>
+          </select>
+        )}
       </nav>
     </header>
   );

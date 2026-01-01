@@ -9,7 +9,7 @@ export async function GET() {
   try {
     const file = await fs.readFile(incomePath, 'utf-8');
     incomeData = JSON.parse(file);
-  } catch (e) {
+  } catch {
     // fallback to empty
   }
   const totalIncome = incomeData.reduce(

@@ -22,8 +22,7 @@ import {
   GoalsWidget,
 } from '@/components/dashboard/widgets';
 
-// Import income sources from Redux
-import { IncomeSource } from '@/features/income/incomeSlice';
+// ...existing code...
 
 export default function Dashboard() {
   const { t } = useTranslation();

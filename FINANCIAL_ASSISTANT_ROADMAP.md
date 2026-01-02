@@ -148,11 +148,11 @@
 
 - [x] Add/edit/delete income sources (CRUD)
   - Modal forms, validation, and error handling
-- [ ] Support multiple earners
+- [x] Support multiple earners
   - Assign income to household members, show contribution stats
-- [ ] Frequency settings (weekly, bi-weekly, monthly, annual)
+- [x] Frequency settings (weekly, bi-weekly, monthly, annual)
   - Support all frequencies, auto-calculate monthly equivalent
-- [ ] Expected vs actual income tracking
+- [x] Expected vs actual income tracking
   - Compare expected and received payments, show variance
 - [ ] Tax withholding calculations
   - Federal, state, and custom deductions

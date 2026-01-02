@@ -7,6 +7,7 @@
 - Test data for ~$60k/year household income sources in `src/assets/testdata_income.json`
 - Sidebar navigation link to Income page
 - Accessibility improvements: navigation roles, aria-labels, skip-to-content link, visible focus states, improved color contrast, and screen reader support for onboarding wizard.
+- **Expected vs actual income tracking**: UI and logic for entering, displaying, and comparing expected and received income, with variance calculation and color-coded display. Test data updated for realistic household scenario.
 
 # Changelog
 

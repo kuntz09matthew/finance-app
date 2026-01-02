@@ -5,8 +5,9 @@
     { "name": "Taylor", "age": 5, "relation": "Child" }
   ],
   "income": [
-    { "source": "Alex - Salary", "amount": 4200, "frequency": "monthly" },
-    { "source": "Jamie - Part-time", "amount": 800, "frequency": "monthly" }
+    { "source": "Salary", "amount": 4200, "frequency": "monthly", "earner": "Alex" },
+    { "source": "Part-time", "amount": 800, "frequency": "monthly", "earner": "Jamie" },
+    { "source": "Allowance", "amount": 50, "frequency": "monthly", "earner": "Taylor" }
   ],
   "budget": {
     "housing": 1200,

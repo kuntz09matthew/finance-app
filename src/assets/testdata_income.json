@@ -3,30 +3,35 @@
     "id": "1",
     "source": "Alex - Salary",
     "amount": 4200,
-    "frequency": "monthly"
+    "frequency": "monthly",
+    "earner": "Alex"
   },
   {
     "id": "2",
     "source": "Jamie - Part-time",
     "amount": 800,
-    "frequency": "monthly"
+    "frequency": "monthly",
+    "earner": "Jamie"
   },
   {
     "id": "3",
     "source": "Freelance Project",
     "amount": 600,
-    "frequency": "monthly"
+    "frequency": "monthly",
+    "earner": "Alex"
   },
   {
     "id": "4",
     "source": "Dividends",
     "amount": 120,
-    "frequency": "annual"
+    "frequency": "annual",
+    "earner": "Alex"
   },
   {
     "id": "5",
     "source": "Gift",
     "amount": 200,
-    "frequency": "annual"
+    "frequency": "annual",
+    "earner": "Jamie"
   }
 ]

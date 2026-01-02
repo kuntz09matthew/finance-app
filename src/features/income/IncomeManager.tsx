@@ -9,6 +9,16 @@ import { v4 as uuidv4 } from 'uuid';
 
 export function IncomeManager() {
   const sources = useSelector((state: RootState) => state.income.sources);
+  // Try to get household members from onboarding or fallback to unique earners in sources, or fallback demo members
+  // const onboarding = useSelector((state: RootState) => state.onboarding); // Uncomment and type RootState/onboarding if needed
+  // Only show earners that actually have income sources, for accurate totals
+  let householdMembers: string[] = Array.from(new Set(sources.map((s) => s.earner))).filter(
+    Boolean,
+  );
+  // Fallback demo members if still empty
+  if (!householdMembers.length) {
+    householdMembers = ['Alex', 'Jamie', 'Taylor'];
+  }
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
   const [editId, setEditId] = useState<string | null>(null);
@@ -58,6 +68,14 @@ export function IncomeManager() {
 
   const initialData = editId ? sources.find((s) => s.id === editId) : undefined;
 
+  // Calculate contribution stats
+  const contributionStats = householdMembers.map((member) => {
+    const total = sources
+      .filter((s) => s.earner === member)
+      .reduce((sum, s) => sum + (s.actualAmount ?? 0), 0);
+    return { member, total };
+  });
+
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
@@ -66,14 +84,32 @@ export function IncomeManager() {
           Add Income
         </button>
       </div>
+      <div className="mb-4">
+        <h2 className="text-lg font-semibold mb-2">Contribution by Earner</h2>
+        <table className="w-full border rounded bg-background text-foreground">
+          <thead>
+            <tr>
+              <th className="p-2 text-left">Earner</th>
+              <th className="p-2 text-left">Total Income</th>
+            </tr>
+          </thead>
+          <tbody>
+            {contributionStats.map(({ member, total }, idx) => (
+              <tr key={member || idx} className="border-t">
+                <td className="p-2">{member}</td>
+                <td className="p-2">${total.toLocaleString()}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <IncomeList sources={sources} onEdit={handleEdit} onDelete={handleDelete} />
       <IncomeModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
         onSave={handleSave}
-        initialData={
-          initialData ? { ...initialData, amount: Number(initialData.amount) } : undefined
-        }
+        initialData={initialData}
+        householdMembers={householdMembers}
       />
     </div>
   );

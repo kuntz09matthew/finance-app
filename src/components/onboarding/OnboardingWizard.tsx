@@ -14,6 +14,7 @@ export interface IncomeSource {
   source: string;
   amount: string;
   frequency: string;
+  earner: string;
 }
 
 export interface Budget {
@@ -33,7 +34,7 @@ export function OnboardingWizard() {
     { name: '', age: '', relation: '' },
   ]);
   const [income, setIncome] = useState<IncomeSource[]>([
-    { source: '', amount: '', frequency: 'monthly' },
+    { source: '', amount: '', frequency: 'monthly', earner: '' },
   ]);
   const [budget, setBudget] = useState<Budget>({
     housing: '',
@@ -70,7 +71,13 @@ export function OnboardingWizard() {
         <HouseholdStep onNext={next} household={household} setHousehold={setHousehold} />
       )}
       {step === 'income' && (
-        <IncomeStep onNext={next} onBack={back} income={income} setIncome={setIncome} />
+        <IncomeStep
+          onNext={next}
+          onBack={back}
+          income={income}
+          setIncome={setIncome}
+          household={household}
+        />
       )}
       {step === 'budget' && (
         <BudgetStep onNext={next} onBack={back} budget={budget} setBudget={setBudget} />
@@ -173,17 +180,22 @@ interface IncomeStepProps {
   onBack: () => void;
   income: IncomeSource[];
   setIncome: React.Dispatch<React.SetStateAction<IncomeSource[]>>;
+  household: HouseholdMember[];
 }
 
-function IncomeStep({ onNext, onBack, income, setIncome }: IncomeStepProps) {
+function IncomeStep({ onNext, onBack, income, setIncome, household }: IncomeStepProps) {
   const { t } = useTranslation();
+  const members = household.map((m) => m.name).filter(Boolean);
   const handleChange = (idx: number, field: keyof IncomeSource, value: string) => {
     setIncome((prev) => prev.map((i, n) => (n === idx ? { ...i, [field]: value } : i)));
   };
   const addIncome = () =>
-    setIncome((prev) => [...prev, { source: '', amount: '', frequency: 'monthly' }]);
+    setIncome((prev) => [
+      ...prev,
+      { source: '', amount: '', frequency: 'monthly', earner: members[0] || '' },
+    ]);
   const removeIncome = (idx: number) => setIncome((prev) => prev.filter((_, i) => i !== idx));
-  const canContinue = income.every((i) => i.source && i.amount && i.frequency);
+  const canContinue = income.every((i) => i.source && i.amount && i.frequency && i.earner);
   return (
     <div aria-label="Income Sources Step" role="group">
       <h2 className="text-xl font-semibold mb-2">{t('onboarding.incomeTitle')}</h2>
@@ -229,6 +241,23 @@ function IncomeStep({ onNext, onBack, income, setIncome }: IncomeStepProps) {
               <option value="bi-weekly">{t('onboarding.frequency')}: Bi-weekly</option>
               <option value="weekly">{t('onboarding.frequency')}: Weekly</option>
               <option value="annual">{t('onboarding.frequency')}: Annual</option>
+            </select>
+            <label htmlFor={`income-earner-${idx}`} className="sr-only">
+              Earner
+            </label>
+            <select
+              id={`income-earner-${idx}`}
+              className="border rounded px-2 py-1"
+              value={inc.earner}
+              onChange={(e) => handleChange(idx, 'earner', e.target.value)}
+              aria-required="true"
+            >
+              <option value="">Select Earner</option>
+              {members.map((name) => (
+                <option key={name} value={name}>
+                  {name}
+                </option>
+              ))}
             </select>
             {income.length > 1 && (
               <button

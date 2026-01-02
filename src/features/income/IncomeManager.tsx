@@ -31,10 +31,6 @@ export function IncomeManager() {
     loadMockData();
   }, [dispatch]);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const handleAdd = () => {
     setEditId(null);
     setModalOpen(true);

@@ -1,3 +1,7 @@
+// For legacy support: type with optional amount
+type LegacyIncome = {
+  amount?: number;
+};
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface IncomeSource {
@@ -36,18 +40,37 @@ const incomeSlice = createSlice({
       // Backward compatibility: if data uses 'amount', map to expected/actual
       state.sources = action.payload.map((item) => {
         if (typeof item.expectedAmount === 'number' && typeof item.actualAmount === 'number') {
-          return item;
-        } else if (typeof item.amount === 'number') {
           return {
             ...item,
-            expectedAmount: item.amount,
-            actualAmount: item.amount,
+            id: item.id ?? '',
+            source: item.source ?? '',
+            expectedAmount: item.expectedAmount,
+            actualAmount: item.actualAmount,
+            frequency: item.frequency ?? 'monthly',
+            earner: item.earner ?? '',
+            type: item.type ?? 'Other',
+          };
+        } else if (typeof (item as LegacyIncome).amount === 'number') {
+          return {
+            ...item,
+            id: item.id ?? '',
+            source: item.source ?? '',
+            expectedAmount: (item as LegacyIncome).amount,
+            actualAmount: (item as LegacyIncome).amount,
+            frequency: item.frequency ?? 'monthly',
+            earner: item.earner ?? '',
+            type: item.type ?? 'Other',
           };
         } else {
           return {
             ...item,
+            id: item.id ?? '',
+            source: item.source ?? '',
             expectedAmount: 0,
             actualAmount: 0,
+            frequency: item.frequency ?? 'monthly',
+            earner: item.earner ?? '',
+            type: item.type ?? 'Other',
           };
         }
       });

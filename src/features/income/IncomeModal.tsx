@@ -7,6 +7,11 @@ const incomeTypes = [
   { value: 'Other', label: 'Other' },
 ];
 import React, { useState, useEffect } from 'react';
+
+// For legacy support: type with optional amount
+type LegacyIncome = {
+  amount?: number;
+};
 import { IncomeSource } from './incomeSlice';
 
 interface IncomeModalProps {
@@ -68,8 +73,8 @@ function ModalContent({
   const [source, setSource] = useState(initialData ? initialData.source : '');
   // Support legacy 'amount' property for backward compatibility
   const legacyAmount =
-    initialData && typeof (initialData as { amount?: number }).amount === 'number'
-      ? (initialData as { amount: number }).amount
+    initialData && typeof (initialData as LegacyIncome).amount === 'number'
+      ? (initialData as LegacyIncome).amount
       : undefined;
   const [expectedAmount, setExpectedAmount] = useState(
     initialData && typeof initialData.expectedAmount === 'number'

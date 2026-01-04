@@ -2,8 +2,8 @@
   {
     "id": "1",
     "source": "Salary",
-    "expectedAmount": 4200,
-    "actualAmount": 4200,
+    "grossAmount": 4200,
+    "netAmount": 4200,
     "frequency": "monthly",
     "earner": "Alex",
     "type": "Salary"
@@ -11,8 +11,8 @@
   {
     "id": "2",
     "source": "Part-time",
-    "expectedAmount": 800,
-    "actualAmount": 750,
+    "grossAmount": 800,
+    "netAmount": 750,
     "frequency": "monthly",
     "earner": "Jamie",
     "type": "Salary"
@@ -20,8 +20,8 @@
   {
     "id": "3",
     "source": "Freelance Project",
-    "expectedAmount": 600,
-    "actualAmount": 650,
+    "grossAmount": 600,
+    "netAmount": 650,
     "frequency": "monthly",
     "earner": "Alex",
     "type": "Freelance"
@@ -29,8 +29,8 @@
   {
     "id": "4",
     "source": "Dividends",
-    "expectedAmount": 120,
-    "actualAmount": 120,
+    "grossAmount": 120,
+    "netAmount": 120,
     "frequency": "annual",
     "earner": "Alex",
     "type": "Other"
@@ -38,8 +38,8 @@
   {
     "id": "5",
     "source": "Gift",
-    "expectedAmount": 200,
-    "actualAmount": 0,
+    "grossAmount": 200,
+    "netAmount": 0,
     "frequency": "annual",
     "earner": "Jamie",
     "type": "Gift"

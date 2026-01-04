@@ -3,8 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import { addIncomeSource, editIncomeSource, deleteIncomeSource, IncomeSource } from './incomeSlice';
+
 import { IncomeModal } from './IncomeModal';
 import { IncomeList } from './IncomeList';
+import { TaxWithholdingCalculator } from './TaxWithholdingCalculator';
 import { v4 as uuidv4 } from 'uuid';
 
 export function IncomeManager() {
@@ -72,7 +74,7 @@ export function IncomeManager() {
   const contributionStats = householdMembers.map((member) => {
     const total = sources
       .filter((s) => s.earner === member)
-      .reduce((sum, s) => sum + (s.actualAmount ?? 0), 0);
+      .reduce((sum, s) => sum + (s.netAmount ?? 0), 0);
     return { member, total };
   });
 
@@ -104,6 +106,7 @@ export function IncomeManager() {
         </table>
       </div>
       <IncomeList sources={sources} onEdit={handleEdit} onDelete={handleDelete} />
+      {/* Tax Withholding Calculations section removed, now handled in modal only */}
       <IncomeModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}

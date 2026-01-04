@@ -2,12 +2,16 @@
 
 ### Added
 
+- Refactored income model and UI to use Gross Amount and Net Amount throughout all features.
+- Net Amount is now auto-calculated via the tax calculator popup in the Add/Edit Income modal.
+- Updated income list/table, modal, and test data to reflect new terminology and logic.
+- Removed all references to Expected/Actual Amount in favor of Gross/Net.
+- Tax withholding calculations (federal, state, custom deductions) for each income source, with interactive calculator and net income display. UI supports dark/light themes and is accessible. Test data updated for realistic ~$60k/year household.
 - Income sources CRUD (add/edit/delete) page with modal forms, validation, and error handling
 - Redux slice for income sources
 - Test data for ~$60k/year household income sources in `src/assets/testdata_income.json`
 - Sidebar navigation link to Income page
 - Accessibility improvements: navigation roles, aria-labels, skip-to-content link, visible focus states, improved color contrast, and screen reader support for onboarding wizard.
-- **Expected vs actual income tracking**: UI and logic for entering, displaying, and comparing expected and received income, with variance calculation and color-coded display. Test data updated for realistic household scenario.
 
 # Changelog
 

@@ -4,14 +4,21 @@ type LegacyIncome = {
 };
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+export interface CustomDeduction {
+  name: string;
+  amount: number;
+}
+
 export interface IncomeSource {
   id: string;
   source: string;
-  expectedAmount: number; // What is expected for this period
-  actualAmount: number; // What was actually received for this period
+  grossAmount: number; // Income before deductions
+  netAmount: number; // Income after deductions
   frequency: 'weekly' | 'bi-weekly' | 'monthly' | 'annual' | 'one-time';
   earner: string; // Name of the household member
   type: string; // e.g. Salary, Freelance, Gift, Bonus, Other
+  isTaxed: boolean; // If false, net = gross
+  deductions: CustomDeduction[]; // Custom deductions (insurance, child support, etc)
 }
 
 interface IncomeState {
@@ -39,38 +46,47 @@ const incomeSlice = createSlice({
     setIncomeSources(state, action: PayloadAction<Partial<IncomeSource>[]>) {
       // Backward compatibility: if data uses 'amount', map to expected/actual
       state.sources = action.payload.map((item) => {
-        if (typeof item.expectedAmount === 'number' && typeof item.actualAmount === 'number') {
+        // If item has grossAmount and netAmount, treat as IncomeSource
+        if (typeof item.grossAmount === 'number' && typeof item.netAmount === 'number') {
           return {
             ...item,
             id: item.id ?? '',
             source: item.source ?? '',
-            expectedAmount: typeof item.expectedAmount === 'number' ? item.expectedAmount : 0,
-            actualAmount: typeof item.actualAmount === 'number' ? item.actualAmount : 0,
+            grossAmount: item.grossAmount ?? 0,
+            netAmount: item.netAmount ?? 0,
             frequency: item.frequency ?? 'monthly',
             earner: item.earner ?? '',
             type: item.type ?? 'Other',
+            isTaxed: typeof item.isTaxed === 'boolean' ? item.isTaxed : true,
+            deductions: Array.isArray(item.deductions) ? item.deductions : [],
           };
         } else if (typeof (item as LegacyIncome).amount === 'number') {
+          // LegacyIncome type
           return {
             ...item,
             id: item.id ?? '',
             source: item.source ?? '',
-            expectedAmount: (item as LegacyIncome).amount ?? 0,
-            actualAmount: (item as LegacyIncome).amount ?? 0,
+            grossAmount: (item as LegacyIncome).amount ?? 0,
+            netAmount: (item as LegacyIncome).amount ?? 0,
             frequency: item.frequency ?? 'monthly',
             earner: item.earner ?? '',
             type: item.type ?? 'Other',
+            isTaxed: true,
+            deductions: [],
           };
         } else {
+          // Fallback for incomplete data
           return {
             ...item,
             id: item.id ?? '',
             source: item.source ?? '',
-            expectedAmount: 0,
-            actualAmount: 0,
+            grossAmount: 0,
+            netAmount: 0,
             frequency: item.frequency ?? 'monthly',
             earner: item.earner ?? '',
             type: item.type ?? 'Other',
+            isTaxed: true,
+            deductions: [],
           };
         }
       });

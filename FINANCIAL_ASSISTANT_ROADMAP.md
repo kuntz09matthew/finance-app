@@ -150,14 +150,20 @@
   - Modal forms, validation, and error handling
 - [x] Support multiple earners
   - Assign income to household members, show contribution stats
-- [x] Frequency settings (weekly, bi-weekly, monthly, annual)
+  - [x] Frequency settings (weekly, bi-weekly, monthly, annual)
   - Support all frequencies, auto-calculate monthly equivalent
+  - [x] Unified income table: Use a single table/model for both recurring and one-time incomes, with a frequency/recurrence field to distinguish them (no separate tables/pages needed)
+  - [x] Recurring incomes are auto-generated/displayed in each relevant month; one-time incomes appear only in their month
 - [x] Expected vs actual income tracking
   - Compare expected and received payments, show variance
-- [ ] Tax withholding calculations
+- [x] Tax withholding calculations
   - Federal, state, and custom deductions
-- [ ] Net income calculator
-  - Show gross, deductions, and net for each source
+  - [x] Net income calculator
+    - Refactored income features to use Gross Amount and Net Amount (net auto-calculated)
+    - Model, UI, and test data updated
+    - Net amount calculated via tax calculator popup
+    - All references to expected/actual removed
+- [ ] Implement income date (for one-time) and start date (for recurring) fields for all income sources and implement end date or 'stop recurrence' field/action for recurring incomes, so users can end a recurring income at any time (e.g., job ends, temporary contract, etc.)
 - [ ] Income trend charts
   - Line/area charts for total and by source
 - [ ] Year-over-year income comparison
@@ -328,6 +334,7 @@
 
 - [ ] Monthly summary report
   - Income vs. expenses, savings, trends, export/share
+  - [ ] Monthly income view: Show all incomes (recurring and one-time) for any selected month, expanding recurring incomes into each relevant month for display and calculations
 - [ ] Spending breakdown (charts, filters)
   - Pie/bar/line charts, customizable timeframes
 - [ ] Income report

@@ -6,7 +6,9 @@
     "netAmount": 4200,
     "frequency": "monthly",
     "earner": "Alex",
-    "type": "Salary"
+    "type": "Salary",
+    "startDate": "2025-01-01",
+    "endDate": null
   },
   {
     "id": "2",
@@ -15,16 +17,19 @@
     "netAmount": 750,
     "frequency": "monthly",
     "earner": "Jamie",
-    "type": "Salary"
+    "type": "Salary",
+    "startDate": "2025-03-01",
+    "endDate": null
   },
   {
     "id": "3",
     "source": "Freelance Project",
     "grossAmount": 600,
     "netAmount": 650,
-    "frequency": "monthly",
+    "frequency": "one-time",
     "earner": "Alex",
-    "type": "Freelance"
+    "type": "Freelance",
+    "date": "2025-06-15"
   },
   {
     "id": "4",
@@ -33,15 +38,18 @@
     "netAmount": 120,
     "frequency": "annual",
     "earner": "Alex",
-    "type": "Other"
+    "type": "Other",
+    "startDate": "2025-01-01",
+    "endDate": null
   },
   {
     "id": "5",
     "source": "Gift",
     "grossAmount": 200,
     "netAmount": 0,
-    "frequency": "annual",
+    "frequency": "one-time",
     "earner": "Jamie",
-    "type": "Gift"
+    "type": "Gift",
+    "date": "2025-12-25"
   }
 ]

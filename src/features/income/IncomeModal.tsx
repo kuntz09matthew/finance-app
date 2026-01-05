@@ -88,6 +88,9 @@ function ModalContent({
   const [earner, setEarner] = useState(initialData ? initialData.earner : members[0] || '');
   const [type, setType] = useState(initialData ? initialData.type || 'Salary' : 'Salary');
   const [customType, setCustomType] = useState('');
+  const [date, setDate] = useState(initialData?.date || '');
+  const [startDate, setStartDate] = useState(initialData?.startDate || '');
+  const [endDate, setEndDate] = useState(initialData?.endDate || '');
   const [error, setError] = useState('');
   const [showTaxCalc, setShowTaxCalc] = useState(false);
 
@@ -113,6 +116,10 @@ function ModalContent({
       type: finalType,
       isTaxed,
       deductions,
+      // New fields
+      date: frequency === 'one-time' ? date : undefined,
+      startDate: frequency !== 'one-time' ? startDate : undefined,
+      endDate: frequency !== 'one-time' ? endDate : undefined,
     });
     onClose();
   };
@@ -290,11 +297,7 @@ function ModalContent({
           <select
             className="border rounded px-2 py-1 w-full"
             value={frequency}
-            onChange={(e) =>
-              setFrequency(
-                e.target.value as 'weekly' | 'bi-weekly' | 'monthly' | 'annual' | 'one-time',
-              )
-            }
+            onChange={(e) => setFrequency(e.target.value as typeof frequency)}
           >
             {frequencies.map((f) => (
               <option key={f.value} value={f.value}>
@@ -303,6 +306,40 @@ function ModalContent({
             ))}
           </select>
         </div>
+        {/* Date fields for one-time and recurring */}
+        {frequency === 'one-time' && (
+          <div className="mb-4">
+            <label className="block mb-1">Date</label>
+            <input
+              className="border rounded px-2 py-1 w-full"
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+          </div>
+        )}
+        {frequency !== 'one-time' && (
+          <>
+            <div className="mb-4">
+              <label className="block mb-1">Start Date</label>
+              <input
+                className="border rounded px-2 py-1 w-full"
+                type="date"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block mb-1">End Date (optional)</label>
+              <input
+                className="border rounded px-2 py-1 w-full"
+                type="date"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+              />
+            </div>
+          </>
+        )}
         <div className="mb-4">
           <label className="block mb-1">Earner</label>
           <select

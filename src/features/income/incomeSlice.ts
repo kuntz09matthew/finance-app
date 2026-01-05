@@ -19,6 +19,10 @@ export interface IncomeSource {
   type: string; // e.g. Salary, Freelance, Gift, Bonus, Other
   isTaxed: boolean; // If false, net = gross
   deductions: CustomDeduction[]; // Custom deductions (insurance, child support, etc)
+  // New fields for roadmap feature
+  date?: string; // For one-time incomes (ISO string)
+  startDate?: string; // For recurring incomes (ISO string)
+  endDate?: string; // For recurring incomes (ISO string, optional)
 }
 
 interface IncomeState {
@@ -59,6 +63,9 @@ const incomeSlice = createSlice({
             type: item.type ?? 'Other',
             isTaxed: typeof item.isTaxed === 'boolean' ? item.isTaxed : true,
             deductions: Array.isArray(item.deductions) ? item.deductions : [],
+            date: item.date,
+            startDate: item.startDate,
+            endDate: item.endDate,
           };
         } else if (typeof (item as LegacyIncome).amount === 'number') {
           // LegacyIncome type
@@ -73,6 +80,9 @@ const incomeSlice = createSlice({
             type: item.type ?? 'Other',
             isTaxed: true,
             deductions: [],
+            date: item.date,
+            startDate: item.startDate,
+            endDate: item.endDate,
           };
         } else {
           // Fallback for incomplete data
@@ -87,6 +97,9 @@ const incomeSlice = createSlice({
             type: item.type ?? 'Other',
             isTaxed: true,
             deductions: [],
+            date: item.date,
+            startDate: item.startDate,
+            endDate: item.endDate,
           };
         }
       });

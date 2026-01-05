@@ -78,6 +78,19 @@ export function IncomeManager() {
     return { member, total };
   });
 
+  // Stop recurrence handler
+  useEffect(() => {
+    const stopHandler = (e: Event) => {
+      const id = (e as CustomEvent).detail;
+      const income = sources.find((s) => s.id === id);
+      if (income && income.frequency !== 'one-time' && !income.endDate) {
+        dispatch(editIncomeSource({ ...income, endDate: new Date().toISOString().slice(0, 10) }));
+      }
+    };
+    window.addEventListener('stopRecurrence', stopHandler);
+    return () => window.removeEventListener('stopRecurrence', stopHandler);
+  }, [sources, dispatch]);
+
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">

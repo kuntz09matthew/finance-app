@@ -20,3 +20,5 @@ export function SavingsWidget({ value }: { value: string }) {
 export function GoalsWidget({ value }: { value: string | number }) {
   return <span className="text-2xl font-bold">{value}</span>;
 }
+
+export { TaxBracketEstimatorWidget } from './TaxBracketEstimatorWidget';

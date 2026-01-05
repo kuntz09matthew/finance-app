@@ -20,6 +20,7 @@ import {
   ExpensesWidget,
   SavingsWidget,
   GoalsWidget,
+  TaxBracketEstimatorWidget,
 } from '@/components/dashboard/widgets';
 
 // ...existing code...
@@ -159,6 +160,10 @@ export default function Dashboard() {
                 </div>
               </div>
             )}
+            {/* Tax Bracket Estimator Widget */}
+            <div className="mb-8">
+              <TaxBracketEstimatorWidget />
+            </div>
             <section className="w-full">
               <h2 className="text-xl font-semibold mb-2 text-foreground">
                 {t('dashboard.recentActivity', { defaultValue: 'Recent Activity' })}

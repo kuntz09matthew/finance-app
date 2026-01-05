@@ -2,11 +2,21 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { IncomeTrendChart } from './IncomeTrendChart';
-import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid } from 'recharts';
+import {
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  CartesianGrid,
+} from 'recharts';
 import { getIncomeTrendData } from './getIncomeTrendData';
+import { IncomeSource } from './incomeSlice';
 
 // Utility to aggregate income by year
-function getYearlyIncomeData(sources: any[]): { year: string; total: number }[] {
+function getYearlyIncomeData(sources: IncomeSource[]): { year: string; total: number }[] {
   const yearTotals: Record<string, number> = {};
   sources.forEach((inc) => {
     let year = '';
@@ -18,7 +28,8 @@ function getYearlyIncomeData(sources: any[]): { year: string; total: number }[] 
       const endYear = inc.endDate ? parseInt(inc.endDate.slice(0, 4)) : new Date().getFullYear();
       for (let y = startYear; y <= endYear; y++) {
         // Use monthly equivalent * 12 for each year
-        yearTotals[y] = (yearTotals[y] || 0) + (inc.frequency !== 'one-time' ? inc.netAmount * 12 : 0);
+        yearTotals[y] =
+          (yearTotals[y] || 0) + (inc.frequency !== 'one-time' ? inc.netAmount * 12 : 0);
       }
     }
   });

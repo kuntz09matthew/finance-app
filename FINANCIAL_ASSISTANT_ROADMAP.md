@@ -166,7 +166,7 @@
 - [x] Implement income date (for one-time) and start date (for recurring) fields for all income sources and implement end date or 'stop recurrence' field/action for recurring incomes, so users can end a recurring income at any time (e.g., job ends, temporary contract, etc.)
 - [x] Income trend charts
   - Line/area charts for total and by source
-- [ ] Year-over-year income comparison
+- [x] Year-over-year income comparison
   - Bar charts, growth/decline indicators
 - [ ] Tax bracket estimator
   - Calculate based on filing status and income

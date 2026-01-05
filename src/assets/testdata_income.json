@@ -1,37 +1,49 @@
+
 [
   {
     "id": "1",
     "source": "Alex - Salary",
     "amount": 4200,
     "frequency": "monthly",
-    "earner": "Alex"
+    "earner": "Alex",
+    "netAmount": 3500,
+    "startDate": "2023-01-01"
   },
   {
     "id": "2",
     "source": "Jamie - Part-time",
     "amount": 800,
     "frequency": "monthly",
-    "earner": "Jamie"
+    "earner": "Jamie",
+    "netAmount": 700,
+    "startDate": "2024-01-01"
   },
   {
     "id": "3",
     "source": "Freelance Project",
     "amount": 600,
     "frequency": "monthly",
-    "earner": "Alex"
+    "earner": "Alex",
+    "netAmount": 600,
+    "startDate": "2025-01-01",
+    "endDate": "2025-12-01"
   },
   {
     "id": "4",
     "source": "Dividends",
     "amount": 120,
     "frequency": "annual",
-    "earner": "Alex"
+    "earner": "Alex",
+    "netAmount": 120,
+    "startDate": "2023-01-01"
   },
   {
     "id": "5",
     "source": "Gift",
     "amount": 200,
-    "frequency": "annual",
-    "earner": "Jamie"
+    "frequency": "one-time",
+    "earner": "Jamie",
+    "netAmount": 200,
+    "date": "2024-12-25"
   }
 ]

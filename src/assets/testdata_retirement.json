@@ -1,0 +1,52 @@
+[
+  {
+    "id": "r1",
+    "type": "401k",
+    "name": "Alex 401k",
+    "owner": "Alex",
+    "balance": 18000,
+    "contribution": 400,
+    "target": 500000,
+    "lastUpdated": "2026-01-01"
+  },
+  {
+    "id": "r2",
+    "type": "IRA",
+    "name": "Jamie IRA",
+    "owner": "Jamie",
+    "balance": 9000,
+    "contribution": 200,
+    "target": 250000,
+    "lastUpdated": "2026-01-01"
+  },
+  {
+    "id": "r3",
+    "type": "Employer Match",
+    "name": "Alex Employer Match",
+    "owner": "Alex",
+    "balance": 4000,
+    "contribution": 100,
+    "target": 100000,
+    "lastUpdated": "2026-01-01"
+  },
+  {
+    "id": "r4",
+    "type": "Pension",
+    "name": "Jamie Pension",
+    "owner": "Jamie",
+    "balance": 12000,
+    "contribution": 0,
+    "target": 150000,
+    "lastUpdated": "2026-01-01"
+  },
+  {
+    "id": "r5",
+    "type": "Annuity",
+    "name": "Alex Annuity",
+    "owner": "Alex",
+    "balance": 5000,
+    "contribution": 50,
+    "target": 50000,
+    "lastUpdated": "2026-01-01"
+  }
+]

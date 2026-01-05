@@ -1,3 +1,7 @@
+import { RetirementManager } from '@/features/retirement/RetirementManager';
+export function RetirementWidget() {
+  return <RetirementManager />;
+}
 import React from 'react';
 import { DashboardWidgetProps } from './DashboardWidget';
 

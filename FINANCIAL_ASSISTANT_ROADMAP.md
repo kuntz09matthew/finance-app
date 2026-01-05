@@ -168,10 +168,10 @@
   - Line/area charts for total and by source
 - [x] Year-over-year income comparison
   - Bar charts, growth/decline indicators
-- [ ] Tax bracket estimator
+- [x] Tax bracket estimator
   - Calculate based on filing status and income
-- [ ] Retirement contribution tracking
-  - Track 401k, IRA, and employer match, show progress
+- [x] Retirement contribution tracking
+  - Track 401k, IRA, employer match, pension, annuity, show progress
 
 #### Monthly Expenses (Bills)
 

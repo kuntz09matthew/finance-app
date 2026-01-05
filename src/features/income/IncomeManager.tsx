@@ -7,6 +7,8 @@ import { addIncomeSource, editIncomeSource, deleteIncomeSource, IncomeSource } f
 import { IncomeModal } from './IncomeModal';
 import { IncomeList } from './IncomeList';
 import { TaxWithholdingCalculator } from './TaxWithholdingCalculator';
+import { IncomeTrendChart } from './IncomeTrendChart';
+import { getIncomeTrendData } from './getIncomeTrendData';
 import { v4 as uuidv4 } from 'uuid';
 
 export function IncomeManager() {

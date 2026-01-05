@@ -164,7 +164,7 @@
     - Net amount calculated via tax calculator popup
     - All references to expected/actual removed
 - [x] Implement income date (for one-time) and start date (for recurring) fields for all income sources and implement end date or 'stop recurrence' field/action for recurring incomes, so users can end a recurring income at any time (e.g., job ends, temporary contract, etc.)
-- [ ] Income trend charts
+- [x] Income trend charts
   - Line/area charts for total and by source
 - [ ] Year-over-year income comparison
   - Bar charts, growth/decline indicators
